@@ -25,21 +25,25 @@ public class FireCellTest
     @BeforeClass
     public static void setUpClass() throws Exception
     {
+        System.out.println("* FireCellTest: @BeforeClass method");
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception
     {
+        System.out.println("* FireCellTest: @AfterClass method");
     }
 
     @Before
     public void setUp()
     {
+        System.out.println("* FireCellTest: @Before method");
     }
 
     @After
     public void tearDown()
     {
+        System.out.println("* FireCellTest: @After method");
     }
 
     /**
@@ -48,13 +52,48 @@ public class FireCellTest
     @Test
     public void testFireCells()
     {
-        System.out.println("fireCells");
-        double[][] activations = null;
+        System.out.println("* FireCellTest: testFireCells()");
+
+        // The activation probabilities that will be used to fire the cells.
+        double[][] activations =
+        {
+            {
+                0.549833997312478, 0.7310585786300049, 0.31002551887238755, 0.5, 0.549833997312478, 0.7310585786300049, 0.31002551887238755, 0.5
+            },
+            {
+                0.598687660112452, 0.8021838885585817, 0.598687660112452, 0.8021838885585817, 0.35434369377420455, 0.598687660112452, 0.35434369377420455, 0.598687660112452
+            },
+            {
+                0.19781611144141825, 0.19781611144141825, 0.401312339887548, 0.401312339887548, 0.35434369377420455, 0.35434369377420455, 0.598687660112452, 0.598687660112452
+            }
+        };
+
         FireCell instance = new FireCell();
-        double[][] expResult = null;
+
         double[][] result = instance.fireCells(activations);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        boolean valid = false;
+
+        // The result is not stochastic, not deterministic.
+        // This makes testing for absolute values impossible,
+        // so we test for valid outputs. 
+        for (int i = 0; i < result.length; i++)
+        {
+            for (int j = 0; j < result[i].length; j++)
+            {
+                // if any value is not equal to the expected value, fail
+                if (result[i][j] == 0)
+                {
+                    valid = true;
+                }
+                // if any value is not equal to the expected value, fail
+                if (result[i][j] == 1)
+                {
+                    valid = true;
+                }
+            }
+        }
+
+        assertTrue(valid);
     }
 }
