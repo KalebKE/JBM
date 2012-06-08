@@ -1,5 +1,10 @@
 
-package boltzmanaiproject;
+package boltzmanaiproject.markov;
+
+import boltzmanaiproject.GenerateWeightedSum;
+import boltzmanaiproject.markov.MarkovConversionMatrix;
+import boltzmanaiproject.markov.MarkovTransferMatrix;
+import boltzmanaiproject.markov.MarkovSteadyState;
 
 /**
  * A program which takes the weights and thresholds for a Boltzman
@@ -12,7 +17,7 @@ public class Main
     static int size = 8;
     static double epsilon = 0.0000000000001;
     static double[][] product = new double[size][size];
-    static int temperature = 2;
+    static double temperature = 0.5;
 
     /**
      * Initializes the input arrays and calls the methods that produce

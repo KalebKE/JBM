@@ -1,5 +1,5 @@
 
-package boltzmanaiproject;
+package boltzmanaiproject.markov;
 
 /**
  * Generates the transfer matrix.
@@ -19,6 +19,18 @@ public class MarkovTransferMatrix
         // array to store the transfer function
         double[][] trans = new double[newWS.length][newWS.length];
         double sum = 0;
+
+        System.out.println();
+        System.out.println("Activation Matrix ");
+        for (int i = 0; i < newWS.length; i++)
+        {
+            for (int j = 0; j < newWS[0].length; j++)
+            {
+                System.out.print(" " + newWS[i][j][2]);
+            }
+            System.out.println();
+        }
+
 
         for (int i = 0; i < newWS.length; i++)
         {

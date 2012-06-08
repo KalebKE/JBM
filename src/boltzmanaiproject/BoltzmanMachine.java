@@ -4,6 +4,8 @@
  */
 package boltzmanaiproject;
 
+import boltzmanaiproject.markov.MarkovSteadyState;
+
 /**
  *
  * @author Kaleb
@@ -53,6 +55,8 @@ public class BoltzmanMachine
     GenerateWeightedSum gm = new GenerateWeightedSum();
     CalculateActivation ca = new CalculateActivation();
     FireCell fc = new FireCell();
+    GenerateTransitionMatrix tm = new GenerateTransitionMatrix();
+    MarkovSteadyState ss = new MarkovSteadyState();
     double[][] statistics = new double[outcomes.length][outcomes[0].length];
     int iterations = 500;
     double temperature = 100;
@@ -72,6 +76,10 @@ public class BoltzmanMachine
         double[][] results = transferProbabilities(statistics);
 
         printMatrix(results);
+
+       double[][] transitionMatrix = tm.generateNewMatrix(results);
+       double[][] steadyState = ss.multiply(transitionMatrix);
+       printMatrix(steadyState);
     }
 
     public double[][] addMatrix(double[][] a, int[][] b)
