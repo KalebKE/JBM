@@ -17,15 +17,15 @@ public class FireCell
      * @param activations the probabilities that each node will fire
      * @return the results of the fired nodes
      */
-    public double[][] fireCells(double[][] activations)
+    public int[][] fireCells(double[][] activations)
     {
         // Array to store the results of the probabilistic
         // activations. These are the new states of the boltzman machine.
-        double[][] states = new double[activations.length][];
+        int[][] states = new int[activations.length][];
 
         for (int i = 0; i < activations.length; i++)
         {
-            states[i] = new double[activations[i].length];
+            states[i] = new int[activations[i].length];
             for (int j = 0; j < activations[i].length; j++)
             {
                 // Get a random double between 0 and 1
@@ -50,7 +50,7 @@ public class FireCell
         return states;
     }
 
-    private void printMatrix(double[][] matrix)
+    private void printMatrix(int[][] matrix)
     {
         System.out.println();
         System.out.println("The new State Matrix: ");

@@ -70,7 +70,7 @@ public class FireCellTest
 
         FireCell instance = new FireCell();
 
-        double[][] result = instance.fireCells(activations);
+        int[][] result = instance.fireCells(activations);
 
         boolean valid = false;
 
