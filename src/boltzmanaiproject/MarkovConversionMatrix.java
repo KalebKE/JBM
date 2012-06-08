@@ -5,7 +5,7 @@ package boltzmanaiproject;
  *
  * @author Kaleb Kircher
  */
-public class ConversionMatrix
+public class MarkovConversionMatrix
 {
     /**
      * Finds the activations and looks up their conversion based on temperature.

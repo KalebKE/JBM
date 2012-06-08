@@ -6,7 +6,7 @@ package boltzmanaiproject;
  *
  * @author Kaleb Kircher
  */
-public class TransferMatrix
+public class MarkovTransferMatrix
 {
     /**
      * Generates The transfer matrix based on the new weights.

@@ -5,7 +5,7 @@ package boltzmanaiproject;
  *
  * @author Kaleb
  */
-public class MultiplyMatrix
+public class MarkovSteadyState
 {
     /**
      * A method that calculates the steady state vectors from a transition matrix.

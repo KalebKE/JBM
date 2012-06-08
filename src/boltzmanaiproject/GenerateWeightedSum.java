@@ -5,7 +5,7 @@ package boltzmanaiproject;
  *
  * @author Kaleb Kircher
  */
-public class GenerateMatrix
+public class GenerateWeightedSum
 {
     private double[][] ws;
 

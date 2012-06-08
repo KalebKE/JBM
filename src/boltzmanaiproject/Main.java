@@ -22,10 +22,10 @@ public class Main
      */
     public static void main(String[] args)
     {
-        GenerateMatrix gm = new GenerateMatrix();
-        ConversionMatrix cm = new ConversionMatrix();
-        TransferMatrix tm = new TransferMatrix();
-        MultiplyMatrix mm = new MultiplyMatrix();
+        GenerateWeightedSum gm = new GenerateWeightedSum();
+        MarkovConversionMatrix cm = new MarkovConversionMatrix();
+        MarkovTransferMatrix tm = new MarkovTransferMatrix();
+        MarkovSteadyState mm = new MarkovSteadyState();
 
         // array for weights
         // ***Change the weights here***
