@@ -10,8 +10,8 @@ public class MultiplyMatrix
     /**
      * A method that calculates the steady state vectors from a transition matrix.
      *
-     * @param product An array that stores the stead state vectors
-     * @param a The transition matrix. 
+     * @param a The transition matrix.
+     * @return
      */
     public double[][] multiply(double[][] a)
     {

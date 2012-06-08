@@ -104,9 +104,18 @@ public class ConversionMatrix
         {
             for (int j = 0; j < ws.length; j++)
             {
+                // probability that the cell state goes to 1 => Pij = 1/(1 + e^-Aij/T)
+                // where Ai is equal to the i,jth element from the result
+                // of the (W*S) - T (T = cell threshold) calculations. The T that Aij is
+                // divided by is Temperature.
                 newWS[i][j][0] = conversionTable[(int) (10 * activations[j][i]) + 10][temperature];
+                // probability that the cell state goes to 0 => 1 -Pij.
                 newWS[i][j][1] = 1 - newWS[i][j][0];
+                // Pij divided by the number of cell
+                // connections
                 newWS[i][j][2] = newWS[i][j][0] / 3;
+                // 1 - Pij divided by the number of cell
+                // connections
                 newWS[i][j][3] = newWS[i][j][1] / 3;
             }
         }

@@ -7,7 +7,7 @@ package boltzmanaiproject;
  */
 public class GenerateMatrix
 {
-    private double[][] ws = new double[3][8];
+    private double[][] ws;
 
     /**
      * Multiplies the weights by the outputs and then subtracts the thresholds.
@@ -20,83 +20,97 @@ public class GenerateMatrix
     public double[][] generateMatrix(double[][] w, int[][] outcomes, double[][] threshold)
     {
 
-        // get the length of the weight matrix
-        int x = w.length;
-
-        // loop that prints the weight matrix
-        System.out.println("Matrix 1 : ");
-        for (int i = 0; i < x; i++)
-        {
-            for (int j = 0; j < x; j++)
-            {
-                System.out.print(" " + w[i][j]);
-            }
-            System.out.println();
-        }
-
-        // grabs the length of the rows for the outcomes
-        int y = outcomes.length;
-
-        // grabs the length of the colums for the outcomes
-        int z = outcomes[0].length;
+        // print the weight matrix
+        System.out.println("Weight Matrix: ");
+        printMatrix(w);
 
         // loop to print second matrix
-        System.out.println("Matrix 2 : ");
-        for (int i = 0; i < y; i++)
-        {
-            for (int j = 0; j < z; j++)
-            {
-                System.out.print(" " + outcomes[i][j]);
-            }
-            System.out.println();
-        }
+        System.out.println("Outcomes Matrix: ");
+        printMatrix(outcomes);
+
+        // Multiply the weight matrix by the possible states (outcomes matrix).
+        this.ws = multiplyMatrix(w, outcomes);
+
+        // print the new WS matrix
+        System.out.println("W*S Matrix: ");
+        printMatrix(ws);
+
+        // Subtract the Threshold from W*S to create (W*S) - T
+        subtractMatrix(ws,threshold);
+  
+        System.out.println();
+        System.out.println("The new ((W*S) - T) Matrix is: ");
+
+        // print the new WS-T matrix
+        printMatrix(ws);
+
+        return ws;
+    }
+
+    /**
+     * Multiply two matrices.
+     * @param a the first matrix
+     * @param b the second matrix
+     * @return the result of the multiplication.
+     */
+    public double[][] multiplyMatrix(double[][] a, int[][] b)
+    {
+        double[][] result = new double[a[0].length][b[0].length];
 
         // multiply the weights by the outcomes
-        for (int i = 0; i < x; i++)
+        for (int i = 0; i < a.length; i++)
         {
-            for (int j = 0; j < z; j++)
+            for (int j = 0; j < b[0].length; j++)
             {
-                for (int k = 0; k < w[0].length; k++)
+                for (int k = 0; k < a[0].length; k++)
                 {
-
-                    ws[i][j] += w[i][k] * outcomes[k][j];
+                    result[i][j] += a[i][k] * b[k][j];
                 }
             }
         }
 
-        System.out.println("Multiply of both matrix : ");
+        return result;
+    }
 
-        // print the new WS matrix
-        for (int i = 0; i < ws.length; i++)
+    /**
+     * Subtract matrix b from matrix a.
+     * @param a the matrix to be subtracted from
+     * @param b the matrix that will be substracted by
+     * @return the result of the subtracted matrix.
+     */
+    public double[][] subtractMatrix(double[][] a, double[][] b)
+    {
+        for (int i = 0; i < a.length; i++)
         {
-            for (int j = 0; j < ws[0].length; j++)
+            for (int j = 0; j < a[0].length; j++)
             {
-                System.out.print(" " + ws[i][j]);
+                a[i][j] = a[i][j] - b[i][0];
+            }
+        }
+        return a;
+    }
+
+    private void printMatrix(double[][] matrix)
+    {
+        for (int i = 0; i < matrix.length; i++)
+        {
+            for (int j = 0; j < matrix[i].length; j++)
+            {
+                System.out.print(" " + matrix[i][j]);
             }
             System.out.println();
         }
+    }
 
-        for (int i = 0; i < ws.length; i++)
+    private void printMatrix(int[][] matrix)
+    {
+        for (int i = 0; i < matrix.length; i++)
         {
-            for (int j = 0; j < ws[0].length; j++)
+            for (int j = 0; j < matrix[i].length; j++)
             {
-                ws[i][j] = ws[i][j] - threshold[i][0];
-            }
-        }
-
-        System.out.println();
-        System.out.println("The new WS Matrix is: ");
-
-        // print the new WS matrix
-        for (int i = 0; i < ws.length; i++)
-        {
-            for (int j = 0; j < ws[0].length; j++)
-            {
-                System.out.print(" " + ws[i][j]);
+                System.out.print(" " + matrix[i][j]);
             }
             System.out.println();
         }
-
-        return ws;
     }
 }

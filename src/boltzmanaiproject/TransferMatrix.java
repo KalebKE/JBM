@@ -25,13 +25,13 @@ public class TransferMatrix
             // find how many bits it takes to represent the number of states
             for (int j = 0; j < Math.ceil(Math.log(newWS.length) / Math.log(2)); j++)
             {
-                // take j and and it with each bit in the state number to 
+                // take j and AND it with each bit in the state number to
                 // check what digit it is transfering on 0 to 1
                 if (((i & (1 << j)) == 0))
                 {
                     trans[i][i + (1 << j)] = newWS[i][newWS[i].length - 1 - j][2];
                 }
-                // take j and and it with each bit in the state number to
+                // take j and AND it with each bit in the state number to
                 // check what digit it is transfering on 1 to 0 
                 else
                 {
