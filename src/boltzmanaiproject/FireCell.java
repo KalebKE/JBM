@@ -45,7 +45,7 @@ public class FireCell
             }
         }
 
-        printMatrix(states);
+        //printMatrix(states);
 
         return states;
     }

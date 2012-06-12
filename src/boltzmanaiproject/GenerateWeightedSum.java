@@ -21,28 +21,28 @@ public class GenerateWeightedSum
     {
 
         // print the weight matrix
-        System.out.println("Weight Matrix: ");
-        printMatrix(w);
+        //System.out.println("Weight Matrix: ");
+        //printMatrix(w);
 
         // loop to print second matrix
-        System.out.println("Outcomes Matrix: ");
-        printMatrix(outcomes);
+       // System.out.println("Outcomes Matrix: ");
+        //printMatrix(outcomes);
 
         // Multiply the weight matrix by the possible states (outcomes matrix).
         this.ws = multiplyMatrix(w, outcomes);
 
         // print the new WS matrix
-        System.out.println("W*S Matrix: ");
-        printMatrix(ws);
+        //System.out.println("W*S Matrix: ");
+        //printMatrix(ws);
 
         // Subtract the Threshold from W*S to create (W*S) - T
         subtractMatrix(ws,threshold);
   
-        System.out.println();
-        System.out.println("The new ((W*S) - T) Matrix is: ");
+        //System.out.println();
+        //System.out.println("The new ((W*S) - T) Matrix is: ");
 
         // print the new WS-T matrix
-        printMatrix(ws);
+        //printMatrix(ws);
 
         return ws;
     }

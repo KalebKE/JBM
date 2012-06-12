@@ -21,8 +21,8 @@ public class GenerateTransitionMatrix
         // Probabilities for transfering from 1 to 0
         double[][] probTransfer0to1 = new double[probTransfer1to0.length][probTransfer1to0[0].length];
 
-        System.out.println();
-        System.out.println("Boltzman Activation scaled by number of cells: " + probTransfer1to0[0].length);
+        //System.out.println();
+        //System.out.println("Boltzman Activation scaled by number of cells: " + probTransfer1to0[0].length);
 
         // The probabilities from transfering from 1 to 0 are 1 minus the
         // probability of going from 0 to 1.
@@ -50,7 +50,7 @@ public class GenerateTransitionMatrix
             }
         }
 
-        printMatrix(probTransfer1to0);
+        //printMatrix(probTransfer1to0);
 
         // array to store the transfer function
         double[][] trans = new double[probTransfer1to0.length][probTransfer1to0.length];

@@ -32,7 +32,6 @@ public class CalculateActivation
             }
         }
 
-        // look up the converstions for the activations and assign them to the new weights array
         for (int i = 0; i < ws.length; i++)
         {
             for (int j = 0; j < ws[i].length; j++)
@@ -45,7 +44,7 @@ public class CalculateActivation
             }
         }
 
-        printMatrix(activations);
+        //printMatrix(activations);
 
         return activations;
     }
